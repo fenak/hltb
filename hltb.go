@@ -42,7 +42,7 @@ func Scrap(queryString string) [][]gameInfo {
 	doc, _ := gokogiri.ParseHtml(body)
 	defer doc.Free()
 
-	rootNode := doc.Root() //.Search(xpath.Compile("//div[@id=\"suggestionsList_main\"]/li"))
+	rootNode := doc.Root()
 	gameNameNodes, _ := rootNode.Search("//h3/a")
 	mainStoryNodes, _ := rootNode.Search("//div[text()=\"Main Story\"]")
 	mainPlusExtraNodes, _ := rootNode.Search("//div[text()=\"Main + Extra\"]")
