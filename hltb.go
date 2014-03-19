@@ -15,6 +15,8 @@ type gameInfo struct {
 	value string
 }
 
+const postUrl = "http://www.howlongtobeat.com/search_main.php?t=games&page=1&sorthead=&sortd=Normal&plat=&detail=0"
+
 func main() {
 	if len(os.Args) < 2 {
 		fmt.Println("Should pass on the game name.")
@@ -34,7 +36,6 @@ func main() {
 }
 
 func Scrap(queryString string) [][]gameInfo {
-	postUrl := "http://www.howlongtobeat.com/search_main.php?t=games&page=1&sorthead=&sortd=Normal&plat=&detail=0"
 	resp, _ := http.PostForm(postUrl, url.Values{"queryString": {queryString}})
 	defer resp.Body.Close()
 	body, _ := ioutil.ReadAll(resp.Body)
